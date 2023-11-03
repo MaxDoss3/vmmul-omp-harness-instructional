@@ -12,8 +12,6 @@ void my_dgemv(int n, double* A, double* x, double* y) {
    // adapted code from slides example
    // row offset is r * n
    for(int row = 0; row < n; row++){
-      y[row] = 0.0;
-
       for (int col = 0; col < n; col++){
          y[row] += A[row * n + col] * x[col];
       }

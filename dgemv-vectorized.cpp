@@ -8,5 +8,21 @@ const char* dgemv_desc = "Vectorized implementation of matrix-vector multiply.";
  */
 void my_dgemv(int n, double* A, double* x, double* y) {
    // insert your code here: implementation of vectorized vector-matrix multiply
+   // adapted code from slides example
+   // row offset is r * n
 
+   int row_offset, temp, store;
+
+   for(int row = 0; row < n; row++){
+      store, temp = 0;
+      row_offset = row * n;
+
+
+      for (int col = 0; col < n; col++){
+         temp = A[row_offset + col] * x[col];
+         store += temp;
+      }
+      
+      y[row] = store;
+   }
 }

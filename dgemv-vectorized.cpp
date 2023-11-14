@@ -15,10 +15,13 @@ void my_dgemv(int n, double* A, double* x, double* y) {
 
    for(int row = 0; row < n; row++){
       row_offset = row * n;
-
+      store = y[row];
       for (int col = 0; col < n; col++){
          temp = A[row_offset + col] * x[col];
-         y[row] += temp;
+         store += temp;
       }
+      
+      y[row] = store;
+      
    }
 }

@@ -1,4 +1,4 @@
-#include <cstdio>
+#include <cstdio?
 const char* dgemv_desc = "Vectorized implementation of matrix-vector multiply.";
 
 /*
@@ -12,19 +12,17 @@ void my_dgemv(int n, double* A, double* x, double* y) {
    // adapted code from slides example
    // row offset is r * n
 
-   int row_offset, temp;
+   int row_offset; 
+   double temp, store;
 
-   for(int row = 0; row < 3; row++){
+   for(int row = 0; row < n; row++){
       row_offset = row * n;
-      int store = y[row];
-      for (int col = 0; col < 3; col++){
+      store = y[row];
+      for (int col = 0; col < n; col++){
          temp = A[row_offset + col] * x[col];
          store += temp;
       }
-      
       y[row] = store;
-
-      printf("Y[row]: %d\n", y[row]);
       
    }
 }
